@@ -1,0 +1,134 @@
+@font-face {
+font-family: 'font24b76c23a1f336d9579b7f3447f9812c';
+    
+    src:    url('https://nomail.com.ua/files/eot/24b76c23a1f336d9579b7f3447f9812c.eot?#iefix') format('embedded-opentype'),
+            url('https://nomail.com.ua/files/woff/24b76c23a1f336d9579b7f3447f9812c.woff') format('woff'),
+            url('https://nomail.com.ua/files/woff2/24b76c23a1f336d9579b7f3447f9812c.woff2') format('woff2');
+}
+
+@font-face { font-family: 'MuseoSansRounded-100';  src: local('MuseoSansRounded-100'), url('https://nomail.com.ua/files/woff/24b76c23a1f336d9579b7f3447f9812c.woff') format('woff'); }
+
+
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: url(img/bg_main_2.png);
+	background-size: cover; 
+	color: #E7E7E7;	
+	font: 22px/1 'MuseoSansRounded-100', sans-serif;
+
+}
+
+.layout {
+	width: 750px;
+	margin: 120px auto 60px;
+	background: #152335;
+} 
+
+.product {
+	display: flex;
+}
+
+/* start product_main */
+.product_main {
+	width: 500px;
+	flex-shrink: 0;
+}
+
+.product_logo {
+    padding: 20px 0 0 20px;
+
+}
+
+.product_picture {
+	display: block;
+	margin: 30px auto 0;
+}
+
+.product_slider {
+	padding-top: 90px;
+	padding-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}
+/* end product_main */
+
+/* start product_info */
+.product_info {
+	width: calc(100% - 500px);
+  padding: 75px 0 0 10px;
+  margin: 0 auto;
+}
+
+.h1 {
+	font-weight: lighter;
+	padding-right: 85px;
+}
+
+.h2 {
+	font-size: 12px;
+	opacity: 0.54;
+	padding-top: 15px;
+}
+.product_rating {
+	padding-top: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.rating_star::before {
+    color: #7f7f7f;
+    content: '\2605';
+    font-size: 11px;
+    margin: 0 2px;
+}
+
+ .rating_star:hover::before,
+ .rating_star:hover ~ .raiting_star::before  {
+ 	color: yellow;
+ }
+
+ .product_rating[data-raiting="4"] .rating_star:nth-child(n + 2)::before,
+ .product_rating[data-raiting="3"] .rating_star:nth-child(n + 3)::before,
+ .product_rating[data-raiting="5"] .rating_star:nth-child(n + 1)::before,
+ .product_rating[data-raiting="2"] .rating_star:nth-child(n + 4)::before,
+ .product_rating[data-raiting="1"] .rating_star:nth-child(n + 5)::before {
+ 	color: yellow;
+ } 
+
+/* end product_info*/
+.product_line {
+	display: flex;
+}
+
+/* start button */
+.button { 
+	margin-top: 25px;
+	color: black; 
+	border: 1px solid #7f7f7f;
+	border-radius: 0;
+	font: 12px/1 'Roboto Condensed', sans-serif;
+	text-transform: uppercase;
+	padding: 8px 0;
+	letter-spacing: .01em;
+	min-width: 185px;
+	text-decoration: none;
+	background: #152335;
+}
+
+.button_size,
+.button_qty {
+	min-width: 65px; 
+	margin-right: 2px;
+}
+
+.button_buy {
+	min-width: 185px;
+
+}
+
+/* end button */
