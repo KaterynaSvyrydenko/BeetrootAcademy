@@ -1,0 +1,33 @@
+include ../contdown/contdown.pug
+include ../timer/timer.pug
+
+mixin participants(props)
+    .participants
+        h1.participants_h1 They already said Battles
+        p.participants_text 
+            |Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec sollicitudin molestie malesuada. Estibulum ante ipsum primis in faucibus orci luctus et ultrices.
+        .participants_gallery
+            .participants_row-1
+                .participants_1
+                .participants_2
+                .participants_3
+            .participants_row-2
+                p.name <span>John Stone</span><br>
+                    |Creative Director at Amazing Game
+                p.name <span>John Stone</span><br>
+                    |Creative Director at Amazing Game
+                p.name <span>John Stone</span><br>
+                        |Creative Director at Amazing Game
+            .participants_row-3
+                .participants_4
+                .participants_5
+                .participants_6
+            .participants_row-4
+                p.name <span>John Stone</span><br>
+                    |Creative Director at Amazing Game
+                p.name <span>John Stone</span><br>
+                    |Creative Director at Amazing Game
+                p.name <span>John Stone</span><br>
+                        |Creative Director at Amazing Game
+        +countdown(props)
+

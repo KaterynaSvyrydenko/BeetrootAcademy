@@ -1,0 +1,20 @@
+include header_link/header_link.pug
+include ../button/button.pug
+
+mixin header()
+    .header
+        .header_bg
+        .header_bg-image
+            .header_item
+                .header_logo Event
+                .header_nav
+                    +header_link('About')
+                    +header_link('Jury')
+                    +header_link('Compettors')
+                    +header_link('Contact us')
+            .header_heading
+                .header_h1 Are you ready for the Battle?
+                .header_h2 The clash between graphic designers
+                +button()
+
+

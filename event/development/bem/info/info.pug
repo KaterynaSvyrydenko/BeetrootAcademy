@@ -1,0 +1,25 @@
+include list/list.pug
+
+mixin info(props)
+    .info
+        .info_description
+            .info_h1 Design Battles
+            p.info_text
+                |Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. 
+                |Donec sollicitudin molestie malesuada. Vestibulum ante ipsum primis
+                | in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
+                | neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+        .info_list
+            .info_h2 What is the course of the Battles?
+            .info_items
+                +list(props.items)
+            p.info_text(class=props.classes)
+                |Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+                | Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
+                | Nulla quis lorem ut libero malesuada feugiat. Mauris blandit aliquet elit,
+                | eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit.
+                | Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+        .info_start 
+            .info_h3 Submissions starts on 10/12/2017 and end on 11/12/2017
+            p.info_text(class=props.start) Nulla quis lorem ut libero malesuada feugiat eget tincidunt nibh pulvinar.
+            +button(props.buttonModifier)
