@@ -1,1 +1,61 @@
-form.less
+.form {
+    width: 1140px;
+    margin: 0 auto;
+    padding-top: 100px;
+    &_h1 {
+        padding-bottom: 75px;
+        text-align: center;
+        font: 1000 62px 'Arial', sans-serif;
+        color: rgba(0,0,0,0.8);
+    }
+    &_text {
+        text-align: center;
+        color: black;
+        font: 22px/40px 'Poppins', sans-serif;
+        width: 1140px;
+        padding-bottom: 75px ;
+        margin: 0px auto;
+        width: 700px;
+    }
+    &_button {
+        width: 640px;
+        margin: 0 auto;
+        .button_field-1-2 {
+            min-width: 305px;
+            height: 35px;
+            border:none;
+        }
+        .button_field-1 {
+            padding-top: 165px;
+            border:none;
+            width: 640px;
+            border-bottom: 10px solid transparent;
+        }
+        .button_field-sign {
+            font: 1000 12px 'Arial', sans-serif;
+            color: white;
+            text-transform: uppercase;
+            padding: 20px 25px;
+            background: #555;
+        }
+        .button_label {
+            border-bottom: 5px solid rgba(0,0,0,0.6);
+        }
+    }
+    .row {
+        display: flex;
+        justify-content: space-between;
+        width: 640px;
+        &_1 {
+            padding-bottom: 45px;
+        }
+        &_3 {
+            padding-bottom: 45px;
+        }
+        &_4 {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 105px;
+        }
+    }
+}
