@@ -1,0 +1,24 @@
+include ../../bem/item/item.pug
+
+mixin instruction(props) 
+    .instruction.layout
+        .instruction_content.layout_section
+            .instruction_search
+                +item({
+                    glass: true,
+                    check: false,
+                    hand: false,
+                })
+            .instruction_check
+                +item({
+                    glass: false,
+                    check: true,
+                    hand: false,
+                })
+            .instruction_hand
+                +item({
+                    glass: false,
+                    check: false,
+                    hand: true,
+                })
+

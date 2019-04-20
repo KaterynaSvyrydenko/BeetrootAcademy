@@ -1,0 +1,10 @@
+include ../../bem/logo/logo.pug
+include ../../bem/social/social.pug
+
+mixin footer(props)
+    footer.footer.layout
+        .footer_content.layout_section
+            +logo({
+                footer: 'logo__footer',
+            })
+            +social()
