@@ -1,0 +1,12 @@
+include ../link/link.pug
+
+mixin menu(props)
+    .menu.layout
+        .menu_content.layout_section 
+            .menu_name BHROMAON
+            .menu_nav
+                +link('who we are')
+                +link('what we do')
+                +link('travel with us')
+                +link('contact us')
+
