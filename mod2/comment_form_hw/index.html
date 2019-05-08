@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+  <title></title>
+</head>
+
+<main class="main">
+  <h2>Add comment</h2>
+  <form class="form">
+    <label class="form_label form_massege">
+      <input id= 'name' class="form_fullwidth" type="text" placeholder="Enter your name..." />
+      <div class='checking'>*Enter your name</div>
+    </label>
+    <label class="form_label form_massege">
+      <textarea id='comment' class="form_fullwidth" placeholder="Your comment here..."></textarea>
+      <div class='checking'>*Please, leave your comment</div>
+    </label>
+    <div class="form_label">
+      <input type="button" value="Добавить" />
+    </div>
+  </form>
+  <div class="comments-list">
+    <h2>All comments</h2>
+    <div class="comments-list_item">
+        <div class="comments-list_meta">
+            <div class="comments-list_name">Pedro</div>
+              <div class="comments-list_date">January 26, 2011 13:51:50</div><a class="comments-list_delete" href="#" rel="no-refresh">Delete ✖</a>
+            </div>
+            <div class="comments-list_text">
+              <Lorem>ipsum dolor sit amet consectetur adipisicing elit. Vel, officia reprehenderit repellendus corporis quis expedita libero? Maxime dolor veniam voluptate pariatur eaque, repellat quas dolorem consequatur facere earum doloribus maiores, perspiciatis, beatae tenetur nostrum iste quibusdam nulla aliquid quae. Eveniet.</Lorem>
+            </div>
+        </div>
+    </div>
+    <template id='templateComment'>
+        <div class="comments-list_item">
+            <div class="comments-list_meta">
+              <div class="comments-list_name"></div>
+              <div class="comments-list_date"></div><a class="comments-list_delete" href="#" rel="no-refresh">Delete ✖</a>
+            </div>
+            <div class="comments-list_text">
+              <Lorem></Lorem>
+            </div>
+          </div>
+        </div>
+    </template>
+</main>
+<script src="app.js"></script>
+</html>
