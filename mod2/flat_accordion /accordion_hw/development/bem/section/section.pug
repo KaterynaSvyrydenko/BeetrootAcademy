@@ -1,0 +1,16 @@
+include ../h1/h1.pug
+include ../img/img.pug
+
+mixin section(props)
+    .section(class=props.classes)(class=props.color)
+        a(href='#')._section(class=props.a)
+            .section_header
+                .section_img
+                    +img(props.img)
+                .section_h1
+                    +h1(props.h1)
+            .section_text._hidden(class=props.textColor) It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
+
+
+
+

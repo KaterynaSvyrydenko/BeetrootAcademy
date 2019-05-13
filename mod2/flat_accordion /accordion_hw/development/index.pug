@@ -1,0 +1,54 @@
+include bem/section/section.pug
+
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        link(rel="stylesheet" href="style.css")
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+        title Flat Accordion
+    body
+        .layout
+            +section({
+                classes: 'location',
+                h1: 'Location',
+                img: 'img/location.png',
+                color: 'section_location-bg',
+                textColor: 'section_location-textCol',
+                a: 'section_location-aCol'
+            })
+            +section({
+                classes: 'music',
+                h1: 'Music',
+                img: 'img/music.png',
+                color: 'section_music-bg',
+                textColor: 'section_music-textCol',
+                a: 'section_music-aCol'
+            })
+            +section({
+                classes: 'notes',
+                h1: 'Notes',
+                img: 'img/light.png',
+                color: 'section_notes-bg',
+                textColor: 'section_notes-textCol',
+                a: 'section_notes-aCol'
+            })
+            +section({
+                classes: 'books',
+                h1: 'Books',
+                img: 'img/book.png',
+                color: 'section_books-bg',
+                textColor: 'section_books-textCol',
+                a: 'section_books-aCol'
+            })
+            +section({
+                classes: 'tendances',
+                h1: 'Tendances',
+                img: 'img/bolt.png',
+                color: 'section_tendances-bg',
+                textColor: 'section_tendances-textCol',
+                a: 'section_tendances-aCol'
+            })
+            script(src="app.js")
+
+
+
