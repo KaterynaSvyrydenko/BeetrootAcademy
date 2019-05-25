@@ -1,0 +1,246 @@
+<html>
+    <head>
+       <title>MediaPlayer</title>
+       <meta charset="utf-8">
+       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+       <link rel="stylesheet" href="normalize.css">
+       <link rel="stylesheet" href='style.css'>
+       <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+     </head>
+     <body>
+        <div class='layout'>
+            <div class='player'>
+                <div class='player_header'>
+                    <div class='header_logo'></div>
+                    <div class='header_nav'>
+                        <div class='header_button'></div>
+                        <div class='header_button'></div>
+                        <div class='header_button'></div>
+                    </div>
+                </div>
+                <div class='player_main'>
+                    <div class='player_albumCover'>
+                        <div class='albumCover_img'> 
+                                <img src=''></div>
+                        <div class='albumCover_h1'></div>
+                        <div class='albumCover_h2'></div>
+                    </div>
+                    <div class='player_list' id='list'>  
+                        <template class='_template_item'>
+                            <a href='#' class='_list_item'>
+                            </a>
+                        </template>
+                    </div>
+                    <div id='audio'>
+                        <audio class='_player' tabindex="0"></audio>
+                    </div>
+                </div>
+                <div class='player_footer'>
+                    <div class="footer_nav">
+                        <div class="control section">
+                            <a href="#" id='previous'>
+                                <div class='previous'></div>
+                            </a>
+                            <a href="#" id='play'>
+                                <div class='play'></div>
+                            </a>
+                            <a href="#" id='next'>
+                                <div class='next'></div>
+                            </a>
+                        </div>
+                        <div id="container">
+                            <div id="myBar">
+                                <a href="#" id='progressBarBtn'>
+                                    <div id='myProgress'></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="special section">
+                            <a href="#" id='muted'>
+                                <div class='sound'></div>
+                            </a>
+                            <a href="#" id='mix'>
+                                <div class='mix'></div>
+                            </a>
+                            <a href="#" id='loop'>
+                                <div class='circle'></div>
+                            </a>
+                            <a href="#" id='share'>
+                                <div class='share'></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <script>
+
+    //global selectors
+
+    const AUDIO = document.querySelector('._player');
+    const TEMPLATE_ITEM = document.querySelector('._template_item');
+    const LIST = document.querySelector('#list');
+    const MY_BAR = document.getElementById("myProgress");
+
+    var listItem = document.querySelectorAll("._list_item");
+    var gPlaylist;
+    var gActive = null;
+    var gPlaying = false;
+    var gActiveId = 0;
+    var img;
+    var src;
+
+    // function declarations
+
+//При загрузке страницы формирует список воспроизведени
+    window.onload = function() {
+        let ajax = new XMLHttpRequest();
+        ajax.open('GET', 'playlist.json', true);
+        ajax.onreadystatechange = function() {
+            if(ajax.readyState != 4) {
+                return;
+            }
+            gPlaylist = JSON.parse(ajax.responseText).playlist;
+            gPlaylist.forEach((item, i) => {
+                const CLONE_TEMPLATE_ITEM = TEMPLATE_ITEM.content.cloneNode(true);
+                var value = 'track/' + item.file;
+                CLONE_TEMPLATE_ITEM.querySelector('._list_item').innerText = item.track;
+                CLONE_TEMPLATE_ITEM.querySelector('._list_item').setAttribute('id', i);
+                CLONE_TEMPLATE_ITEM.querySelector('._list_item').setAttribute('href', value);
+
+                LIST.appendChild(CLONE_TEMPLATE_ITEM);
+            })
+            src = document.getElementById('0').getAttribute('href');
+            AUDIO.setAttribute('src', src);
+        };
+        ajax.send();
+    };
+
+// Для текущего(первого трека) устанавливаютс название песни, автор и обложка альбома. Выбранный трек приобретает класс ative 
+
+    document.querySelector("#play").addEventListener('click', playBtnClick);
+
+    function playBtnClick(){
+        if(gActive == null){
+            setItemAttr(0, gPlaylist[0].image);
+
+            AUDIO.load();
+            AUDIO.play();
+            gPlaying = true;
+
+        }else if(gPlaying){
+            gPlaying = false;
+            AUDIO.pause();
+        }else{
+            AUDIO.play();
+            gPlaying = true;
+        }
+    };
+
+//@param{obgect} - встроенные объект событий
+//Проигрывает выбранный трек из списка треков подключая все необходимые атрибуты
+
+    document.querySelector("#list").addEventListener('click', listClick);
+    function listClick(event){
+        var target = event.target;
+
+        if(target.classList == '_list_item'){
+            event.preventDefault();
+            
+            let aId = target.closest('a').getAttribute('id');
+            
+            for(i = 0; i < gPlaylist.length; i++){
+                if(aId == i){
+                    setItemAttr(i);
+                }
+            }
+            AUDIO.load();
+            AUDIO.play();
+        }
+    }
+
+
+//@param{dom element} - элемент списка воспроизведения
+//Проверяет элемент на наличие элемента с классом _active  и в зависимости от результата удаляет у текущего элемент этот класс, а новому текущему добавляет его
+
+    function setActive(listItem){
+        if(gActive != null){
+            gActive.classList.toggle('_active', false);
+        }
+        listItem.classList.toggle('_active', true);
+        gActive = listItem;
+    };
+
+
+//@param{index} - идентификатор текущего трека
+//Функция добавляет текущему треку название, исолнителя и обложку песни, а также добавляет класс _active
+    function setItemAttr(i){
+        let img = gPlaylist[i].image;
+        src = 'track/'+ gPlaylist[i].file;
+        listItem = document.querySelectorAll("._list_item"); 
+        document.querySelector('.albumCover_h1').innerText = gPlaylist[i].track;
+        document.querySelector('.albumCover_h2').innerText = gPlaylist[i].author;
+        if(img == null){
+            document.querySelector('img').setAttribute('src', 'img/placeholder.png');
+        }else{document.querySelector('img').setAttribute('src', 'img/' + img);};
+        setActive(listItem[i]);
+        AUDIO.setAttribute('id', i);
+        AUDIO.setAttribute('src', src);
+        gActiveId = i;
+    }
+
+// Проигрывает следующй трек в списке
+
+    document.querySelector("#next").addEventListener('click', nextClick);
+
+    function nextClick(){
+        gActiveId = gActiveId + 1;
+        if(gActiveId >= gPlaylist.length){
+            AUDIO.pause();
+            AUDIO.currentTime = 0;
+        }else{
+            setItemAttr(gActiveId);
+            AUDIO.load();
+            AUDIO.play();
+        }
+    }
+
+// Проигрывает предыдущий трек в списке
+
+    document.querySelector("#previous").addEventListener('click', previousClick);
+
+    function previousClick(){
+        gActiveId = gActiveId - 1;
+        if(gActiveId < 0){
+            AUDIO.pause();
+            AUDIO.currentTime = 0;
+        }else{
+            setItemAttr(gActiveId);
+            AUDIO.load();
+            AUDIO.play();
+       }
+    }
+
+//Повторяет текущий трек 
+
+    document.querySelector("#loop").addEventListener('click', function(){
+        AUDIO.loop = !AUDIO.loop;
+    });
+
+//Убирает музыку
+
+     document.querySelector("#muted").addEventListener('click', function(){
+        AUDIO.muted = !AUDIO.muted;
+    });
+
+//Сопоставляет длинну трека и текущее время трека и передает полученное значение в процентном определении выбранному елементу значение width
+
+     AUDIO.addEventListener("timeupdate", function() { 
+        let time = AUDIO.duration.toFixed(0);
+        let width = AUDIO.currentTime;
+        let widthPersent = width / time * 100;
+
+        MY_BAR.style.width = widthPersent + '%'; 
+    });
+</script> 
+    </body> 
+</html>

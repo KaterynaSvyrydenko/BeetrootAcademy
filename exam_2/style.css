@@ -1,0 +1,290 @@
+@font-face{
+    font-family: 'Proxima Nova';
+    src: url(ProximaNova/ProximaNovaCond-Regular.woff);
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Proxima Nova ExCn Th';
+    src: url(ProximaNova/ProximaNovaExCn-Thin.woff);
+    font-weight: 100;
+    font-style: normal;
+}
+body{
+    color: black;
+    font-family: 'Proxima Nova', sans-serif;
+}
+.layout{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.player{
+    width: 100%;
+    height: 100vh;
+    padding-top: 15px;
+    margin: 0 auto 0;
+    background: url('img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.player_header{
+    min-width: 580px;
+    height: 45px;
+    background: #F86F05;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.header_logo{
+    background-image: url(svg/logo.svg);
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 1;
+    left: 282;
+    top: -4;
+}
+.player_header:before{
+    content: '';
+    position: absolute;
+    width: 580px;
+    height: 28px;
+    top: -15;
+    left: 0;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #F86F05;
+}
+.header_nav{
+    display: flex;
+    justify-content: flex-start;
+}
+.header_button{
+    width: 18px;
+    height: 18px;
+    background: black;
+    border-radius: 50%;
+    opacity: .3;
+    margin-top: 7px;
+    margin-right: 6px;
+    box-sizing: border-box;
+
+}
+.player_main{
+    width: 580px;
+    height: 325px;
+    background: white;
+    display: flex;
+}
+
+.player_albumCover{
+    width: 300px;
+    height: 325px;
+    background: black;
+    opacity: .8 ;
+    padding-top: 30px;
+    box-sizing: border-box; 
+}
+.albumCover_h1 {
+    color: white;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    font-family: 'Proxima Nova ExCn Th', sans-serif;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+}
+.albumCover_h2{
+    font-size: 14px;
+    opacity: 0.8;
+    color: white;
+    text-align: center;
+    font-family: 'Proxima Nova ExCn Th', sans-serif;
+    letter-spacing: .01em;
+} 
+.albumCover_img{
+    text-align: center;
+}
+
+.player_footer{
+    width: 580px;
+    height: 45px;
+    background: black;
+    position: relative;
+
+}
+.player_footer:after{
+    content: '';
+    position: absolute;
+    width: 580px;
+    height: 15px;
+    bottom: -10;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: black;
+    z-index: 0;
+}
+.player_list{
+    width: 280px;
+    box-sizing: border-box;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.player_list::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+}
+._list_item{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    text-decoration: none;
+    color: black;
+}
+._list_item:nth-child(even){
+    background: #DDD8D3;
+}
+.track_timer{
+    font-family: 'Proxima Nova';
+    color: grey;
+    opacity: 0.8;
+    font-size: 12px;
+}
+._active{
+    color: #F86F05;
+    position: relative;
+}
+._active:before{
+    content:'';
+    background: url('svg/playActive.svg');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 8;
+    bottom: 9;
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+.footer_nav{
+    width: 580px;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.section{
+    display: flex;
+    align-items: center;
+    height: 25px;
+}
+.control{
+    margin-left: 35px;
+}
+.previous{
+    background: url('svg/previous.svg');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    z-index: 1;
+    margin-right: 12px;
+    box-sizing: border-box;
+}
+.play{
+    background: url('svg/play.svg');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 23px;
+    position: relative;
+    z-index: 1;
+    margin-right: 12px;
+    box-sizing: border-box;
+}
+.next{
+    background: url('svg/next.svg');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+.sound{
+    background: url('svg/mute.svg');
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+    margin-right: 20px; 
+    box-sizing: border-box;
+}
+.mix{
+    background: url('svg/shuffle.svg');
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+.circle{
+    background: url('svg/repeat.svg');
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+.share{
+    background: url('svg/share.svg');
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+    margin-right: 20px;
+    box-sizing: border-box;
+} 
+
+.container{
+    width: 265px;
+    position: relative;
+    z-index: -1;
+}
+#myProgress {
+
+  background-color: #F86F05;
+  position: absolute;
+  z-index: 2;
+  height: 18px;
+}
+#myBar{
+    width: 265px;
+    height: 18px;
+    background: #3f3f3f;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+#progressBarBtn{
+    width: 265px;
+    display: block;
+}
+
