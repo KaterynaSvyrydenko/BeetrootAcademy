@@ -1,0 +1,124 @@
+body{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+}
+/* START ADDCARD */
+.addcard_container{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(242, 239, 230, .5);
+    display: flex;
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.addcard{
+    width: 440px;
+    height: 400px;
+    background-color: #F2F0E6;
+    margin: auto; 
+    box-sizing: border-box;
+    overflow:hidden;
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 1px -1px 2px #626262, 1px -1px 2px #626262;
+
+}
+.addcard_header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    background-color: #D7D6CD;
+    align-items: center;
+    margin-bottom: 45px;
+}
+.header_button{
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+.close{
+    background-image: url(../img/close.svg);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+}
+.close:hover{
+    background-image: url(../img/close_red.svg);
+    transition: background-color .2s;
+}
+.section{
+    line-height: 40px;
+    font-size: 16px;
+    color: #626262;
+    padding: 0 auto;
+    background-color: #E6E4DA;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.check{
+    background-image: url(../img/check.svg);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+}
+.check:hover{
+    background-image: url(../img/check_green.svg);
+    transition: background-color .2s;
+}
+.date_item,
+.sum_item,
+#selectID{
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    width: 90%;
+    padding: 0 15px;
+    border: none;
+    line-height: 40px;
+    margin: 0 auto 30px;
+    background-color: #E6E4DA;
+    color: #626262;
+    font-size: 14px;
+}
+input.sum_item{
+    line-height: 55px;
+    position: relative;
+    font-size: 20px;
+    background-color: white;
+}
+ #selectID{
+    height: 40px;
+ }
+.save_button{
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    display: block;
+    color: white;
+    background-color: #E6E4DA;
+    padding: 10px 30px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+    margin: 0 auto 45px;
+    cursor: pointer;
+}
+.save_button:hover{
+    background-color: #A21A50;
+    transition: background-color .2s;
+}
+/* END ADD CARD */

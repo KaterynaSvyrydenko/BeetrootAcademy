@@ -1,0 +1,133 @@
+<html lang="ua">
+<head>
+    <link rel="stylesheet" href="../development/bem/_normalize/_normalize.css" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <title>Scrooge</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card">
+            <div class="sidebarLeft">
+                <div class="sidebarLeft_logo"></div>
+                <ul class="sidebarLeft_nav">
+                    <li class="summation nav_item">
+                        <a href='#' class="content">
+                            <div href="#" class='icon summation_icon'></div>
+                            <div class="text">Баланс</div>
+                        </a>
+                        <div class="count">0</div>
+                    </li>
+                    <li class="expenses nav_item">
+                        <a href='#' class="content">
+                            <div href="#" class='icon expenses_icon'></div>
+                            <div class="text">Витрати</div>
+                        </a>
+                        <div class="count">0</div>
+                    </li>
+                    <li class="incomes nav_item">
+                        <a href='#' class="content">
+                            <div class="icon incomes_icon"></div>
+                            <div class="text">Дохід</div>
+                        </a>
+                        <div class="count">0</div>
+                    </li>
+                </ul>
+            </div>
+            <main class="main">
+                <div class="main_nav">
+                    <a href='#' class="previous_btn"></a>
+                    <a href='#' class="main_date">1 червня 2019</a>
+                    <a href='#' class="next_btn"></a>
+                </div>
+                    <div class="main_h1">
+                        <div class="spend_text">Баланс:</div>
+                        <div class="spend_sum">10000 &#8372;</div>
+                    </div>
+                    <div class="main_chart">
+                        <div class="chart_layout"> 
+                            <canvas id="#myChart" style="display: flex; margin: auto;"></canvas>
+                        </div>
+                    </div>
+            </main>
+            <div class="sidebarRight">
+                <div class="filter">
+                    <a href='#' class="filter_byDate filter_item">
+                        <div class="byDate_icon icon"></div>
+                        <div class="byDate_text">За датою</div>
+                    </a>    
+                    <a href="#" class="filter_byCategory filter_item">
+                        <div class="byCategory_icon icon"></div>
+                        <div class="byCategory_text text">За категоріями</div>
+                    </a>
+                </div>
+                <ul class="list_byDate">
+                        <li class="item_date">
+                            <div class="date_header">
+                                <div class="date">Сегодня</div>
+                                <div class="sum">1000 &#8372;</div>
+                            </div>
+                            <div class="date_content">
+                                <div class="category_name">Gifts</div>
+                                <div class="sum">1000 &#8372;</div>
+                            </div>
+                        </li>
+                        <li class="item_category">
+                            <div class="category_header">
+                                <div class="category_name">Gifts</div>
+                                <div class="sum">1000 &#8372;</div> 
+                            </div>
+                            <div class="category_content">
+                                <div class="date">Вчора</div>
+                                <div class="sum">1000 &#8372;</div>
+                            </div>
+                        </li>
+                </ul>
+                <ul class="list_byCategory">
+                    <template>
+                        <li class="item_category">
+                            <div class="category_header">
+                                <img class="pricetag"/>
+                                <div class="category_name"></div>
+                            </div>
+                            <div class="category_content">
+                                <div class="date">Вчера</div>
+                                <div class="sum">1000</div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+                <a href='#' class="button_add">
+                     <div class="button_icon"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@2.8.0'></script>
+    <script> 
+        var ctx = document.getElementById('#myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'doughnut',
+
+        // The data for our dataset
+            data: {
+                labels: ['Дохід', 'Витрати'],
+                datasets: [{
+                    label: 'Поточний баланс',
+                    backgroundColor: ['green','#B61F51'],//'rgb(255, 99, 132)'
+                    borderColor: ['green','#B61F51'],
+                    data: [14000, 4000],
+                }]
+            },
+
+    // Configuration options go here
+            options: {
+            }
+});
+    </script>
+
+</body>
+</html>

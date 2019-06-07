@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroodge</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="addcard_container">
+        <div class="addcard">
+            <div class="addcard_header">
+                <a href="#" class=" header_button">
+                    <div class="close"></div>
+                </a>
+                <a href="" class="section header_button">Додати витрати</a>
+                <a href="#" class="header_button">
+                    <div class="check"></div>
+                </a>
+            </div>
+            <form name="user_data" action="" method="post">
+                <label for="sun">
+                    <input type="number" class="sum_item" placeholder='Додайте суму' min='1' required name="sum">
+                </label>
+                <label for="select">
+                    <select id="selectID" class='select_item' name="category" required name="select">
+                        <option disabled>Оберіть категорію</option>
+                        <option value=”FD”>Їжа</option>
+                        <option value=”CS”>Одяг</option>
+                        <option value=”INT”>Розваги</option>
+                        <option value=”HTH”>Здоров'я</option>
+                        <option value=”HS”>Дім</option>
+                        <option value=”TT”>Транспорт</option>
+                        <option value=”GT”>Подарунки</option>
+                        <option value=”ED”>Навчання</option>
+                        <option value=”SP”>Спорт</option>
+                        <option value=”CH”>Пожертви</option>
+                        <option value=”OTH”>Інше</option>
+                    </select>
+                </label>
+                <label for="date">
+                    <input type="date" class="date_item" placeholder='Введіть дату' required name="date">
+                </label>
+                <label for="send" >
+                    <button value='send' type="submit" placeholder="Зберегти" class='save_button' name="send">Save</button>
+                </label>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
