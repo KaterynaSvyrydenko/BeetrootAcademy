@@ -6,45 +6,39 @@
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div class="addcard_container">
-        <div class="addcard">
-            <div class="addcard_header">
-                <a href="#" class=" header_button">
+    <div class="expenses_content">
+        <div class="expenses">
+            <div class="expenses_header">
+                <a href="#" class="header_button">
                     <div class="close"></div>
                 </a>
-                <a href="" class="section header_button">Додати витрати</a>
-                <a href="#" class="header_button">
+                <a href='#' class="expenses_title header_button">Додати витрати
+                 </a>
+                 <a href="#" class="header_button">
                     <div class="check"></div>
                 </a>
             </div>
-            <form name="user_data" action="" method="post">
-                <label for="sun">
-                    <input type="number" class="sum_item" placeholder='Додайте суму' min='1' required name="sum">
-                </label>
-                <label for="select">
-                    <select id="selectID" class='select_item' name="category" required name="select">
-                        <option disabled>Оберіть категорію</option>
-                        <option value=”FD”>Їжа</option>
-                        <option value=”CS”>Одяг</option>
-                        <option value=”INT”>Розваги</option>
-                        <option value=”HTH”>Здоров'я</option>
-                        <option value=”HS”>Дім</option>
-                        <option value=”TT”>Транспорт</option>
-                        <option value=”GT”>Подарунки</option>
-                        <option value=”ED”>Навчання</option>
-                        <option value=”SP”>Спорт</option>
-                        <option value=”CH”>Пожертви</option>
-                        <option value=”OTH”>Інше</option>
-                    </select>
-                </label>
-                <label for="date">
-                    <input type="date" class="date_item" placeholder='Введіть дату' required name="date">
-                </label>
-                <label for="send" >
-                    <button value='send' type="submit" placeholder="Зберегти" class='save_button' name="send">Save</button>
-                </label>
+            <form class='form' name="user_data" action="" method="post">
+                <input type="number" class="expenses_sum" placeholder='Додайте суму' min='1' required name="sum">
+                <select id="selectID" class='expenses_category' name="category" required name="select">
+                    <option disabled>Оберіть категорію</option>
+                    <option value=”FD”>Їжа</option>
+                    <option value=”CS”>Одяг</option>
+                    <option value=”INT”>Розваги</option>
+                    <option value=”HTH”>Здоров'я</option>
+                    <option value=”HS”>Дім</option>
+                    <option value=”TT”>Транспорт</option>
+                    <option value=”GT”>Подарунки</option>
+                    <option value=”ED”>Навчання</option>
+                    <option value=”SP”>Спорт</option>
+                    <option value=”CH”>Пожертви</option>
+                    <option value=”OTH”>Інше</option>
+                </select>
+                <input type="date" class="expenses_date" placeholder='Введіть дату' required name="date">
+                <button value='send' class="expenses_button" type="submit" placeholder="Зберегти" name="send">Save</button>
             </form>
         </div>
     </div>
 </body>
 </html>
+

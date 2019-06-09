@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroodge</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="incomes_content">
+        <div class="incomes">
+            <div class="incomes_header">
+                <a href="#" class="header_button">
+                    <div class="close"></div>
+                </a>
+                 <a href="#" class="incomes_title header_button">Додати надходження
+                 </a>
+                 <a href="#" class="header_button">
+                    <div class="check"></div>
+                </a>
+            </div>
+            <form name="user_data" action="" method="post">
+                <input type="number" class="incomes_sum" placeholder='Додайте суму' min='1' required name="sum">
+                <select id="selectID" class='incomes_category' name="category" required name="select">
+                    <option disabled>Оберіть категорію</option>
+                    <option value=”SL”>Заробітня платня</option>
+                    <option value=”PR”>Премія</option>
+                    <option value=”GF”>Подарунок</option>
+                </select>
+                <input type="date" class="incomes_date" placeholder='Введіть дату' required name="date">
+                <button value='send' type="submit" placeholder="Зберегти" class='incomes_button' name="send">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

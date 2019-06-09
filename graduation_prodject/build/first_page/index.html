@@ -1,11 +1,10 @@
 <html lang="ua">
 <head>
-    <link rel="stylesheet" href="../development/bem/_normalize/_normalize.css" />
+    <meta charset="UTF-8" />
+    <title>Scrooge</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8" />
-    <title>Scrooge</title>
 </head>
 <body>
     <div class="card">
@@ -14,24 +13,18 @@
                 <div class="sidebarLeft_logo"></div>
                 <ul class="sidebarLeft_nav">
                     <li class="summation nav_item">
-                        <a href='#' class="content">
-                            <div href="#" class='icon summation_icon'></div>
-                            <div class="text">Баланс</div>
-                        </a>
+                        <a href="#" class='icon summation_icon'></a>
+                        <a class="text">Баланс</a>
                         <div class="count">0</div>
                     </li>
                     <li class="expenses nav_item">
-                        <a href='#' class="content">
-                            <div href="#" class='icon expenses_icon'></div>
-                            <div class="text">Витрати</div>
-                        </a>
+                        <a href="#" class='icon expenses_icon'></a>
+                        <a class="text">Витрати</a>
                         <div class="count">0</div>
                     </li>
                     <li class="incomes nav_item">
-                        <a href='#' class="content">
-                            <div class="icon incomes_icon"></div>
-                            <div class="text">Дохід</div>
-                        </a>
+                        <a href="#" class="icon incomes_icon"></a>
+                        <a class="text">Дохід</a>
                         <div class="count">0</div>
                     </li>
                 </ul>
@@ -127,6 +120,9 @@
             options: {
             }
 });
+    </script> 
+    <script>
+        require('./render.js');
     </script>
 
 </body>

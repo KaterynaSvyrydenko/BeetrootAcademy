@@ -5,7 +5,7 @@ body{
     display: flex;
 }
 /* START ADDCARD */
-.expenses_content{
+.incomes_content{
     width: 100%;
     height: 100vh;
     background-color: rgba(242, 239, 230, .5);
@@ -17,7 +17,7 @@ body{
     right: 0;
 }
 
-.expenses{
+.incomes{
     width: 440px;
     height: 400px;
     background-color: #F2F0E6;
@@ -32,7 +32,7 @@ body{
     box-shadow: 6px 6px 6px rgba(0,0,0,.3), -6px 6px 6px rgba(0,0,0,.3);
 
 }
-.expenses_header{
+.incomes_header{
     width: 100%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -56,18 +56,26 @@ body{
     background-image: url(../img/close_red.svg);
     transition: background-color .2s;
 }
-.expenses_title{
+.incomes_title{
     line-height: 40px;
     font-size: 16px;
     color: #626262;
     background-color: #E6E4DA;
+    line-height: 40px;
+    font-size: 16px;
+    color: #626262;
+    background-color: #E6E4DA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
-.expenses_title:hover{
-    background-color: #A21A50;
+.incomes_title:hover{
+    background-color: green;
     color: white;
     transition: background-color .2s;
 }
+
 .check{
     background-image: url(../img/check.svg);
     background-repeat: no-repeat;
@@ -79,9 +87,9 @@ body{
     background-image: url(../img/check_green.svg);
     transition: background-color .2s;
 }
-.expenses_date,
-.expenses_sum,
-.expenses_category{
+.incomes_date,
+.incomes_sum,
+.incomes_category{
     display: block;
     box-sizing: border-box;
     margin-bottom: 30px;
@@ -94,17 +102,17 @@ body{
     color: #626262;
     font-size: 14px;
 }
-.expenses_sum{
+.incomes_sum{
     line-height: 55px;
     position: relative;
     font-size: 20px;
     background-color: white;
 }
-.expenses_category{
+.incomes_category{
     height: 40px;
  }
 
-.expenses_button{
+.incomes_button{
     padding: 0;
     border: none;
     font: inherit;
@@ -120,8 +128,8 @@ body{
     margin: 0 auto 45px;
     cursor: pointer;
 }
-.expenses_button:hover{
-    background-color: #A21A50;
+.incomes_button:hover{
+    background-color: green;
     transition: background-color .2s;
 }
 /* END ADD CARD */
