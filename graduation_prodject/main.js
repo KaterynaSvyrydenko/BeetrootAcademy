@@ -16,7 +16,7 @@ function createWindow () {
     }
   })
   // and load the index.html of the app.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
   mainWindow.loadFile('build/first_page/index.html');
 
   // Open the DevTools.
@@ -25,7 +25,7 @@ function createWindow () {
 
   fs.readFile("data.json", 'utf-8', (err, data) => {
         if(err){
-            alert("An error ocurred reading the file :" + err.message);
+            console.log("An error ocurred reading the file :" + err.message);
             return;
         }
 

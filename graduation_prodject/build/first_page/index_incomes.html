@@ -1,0 +1,243 @@
+<html lang="ua">
+<head>
+    <meta charset="UTF-8" />
+    <title>Scrooge</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style_incomes.css">
+</head>
+<body>
+    <div class="card">
+        <div class="card">
+            <div class="sidebarLeft">
+                <div class="sidebarLeft_logo"></div>
+                <ul class="sidebarLeft_nav">
+                    <a href='index.html' class="summation nav_item">
+                        <div class='icon summation_icon'></div>
+                        <div class="text">Баланс</div>
+                        <div class="count">0</div>
+                    </a>
+                    <a href="index_expenses.html" class="expenses nav_item ">
+                        <div class='icon expenses_icon'></div>
+                        <div class="text">Витрати</div>
+                        <div class="count">0</div>
+                    </a>
+                    <a href="index_incomes.html" class="incomes nav_item nav_item_active">
+                        <div class="icon incomes_icon"></div>
+                        <div class="text">Дохід</div>
+                        <div class="count">0</div>
+                    </a>
+                </ul>
+            </div>
+            <main class="main">
+                <div class="main_nav">
+                    <a href='#' class="previous_btn"></a>
+                    <a href='#' class="main_date">1 червня 2019</a>
+                    <a href='#' class="next_btn"></a>
+                </div>
+                    <!-- <div class="main_h1">
+                        <div class="spend_text">Баланс:</div>
+                        <div class="spend_sum">0 &#8372;</div>
+                    </div> -->
+                    <div class="main_chart">
+                        <div class="chart_layout"> 
+                            <!-- <canvas id="#myChart" style="display: flex; margin: auto;"></canvas> -->
+                        </div>
+                    </div>
+            </main>
+            <div class="sidebarRight">
+                <div class="filter">
+                    <a href='#' class="_filter_bydate filter_item">
+                        <div class="bydate_icon icon"></div>
+                        <div class="bydate_text">За датою</div>
+                    </a>    
+                    <a href="#" class="_filter_bycategory filter_item">
+                        <div class="bycategory_icon icon"></div>
+                        <div class="bycategory_text text">За категоріями</div>
+                    </a>
+                </div>
+                <ul class="list_bydate _hide_list" id="list_bydate">
+                    <template id="template_date">
+                        <li class="item_date">
+                            <div class="date_header">
+                                <div class="date"></div>
+                                <div class="sum"></div>
+                            </div>
+                            <div class="date_content">
+                                <div class="category_name"></div>
+                                <div class="sum"></div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+                <ul class="list_bycategory" id="list_bycategory">
+                    <template id="template_category">
+                        <li class="item_category">
+                            <div class="category_header">
+                                <div class="category_name"></div>
+                            </div>
+                            <div class="category_content">
+                                <div class="date"></div>
+                                <div class="sum"></div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+                <a href='#' class="button_add-incomes _callPopup">
+                     <div class="button_icon"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="popup_layout _popup">
+         <div class="incomes_content">
+            <div class="incomes_popup">
+                <div class="incomes_header">
+                    <a href="#" class="header_button _close">
+                        <div class="close"></div>
+                    </a>
+                    <a href="#" class="incomes_title header_button">Додати надходження
+                    </a>
+                    <a href="#" class="header_button">
+                        <div class="check"></div>
+                    </a>
+                </div>
+                <form name="user_data" action="" method="post">
+                    <input type="number" class="incomes_sum _incomes_sum" placeholder='Додайте суму' min='1' required name="sum">
+                    <select id="selectID" class='incomes_category _incomes_category' name="category" required name="select">
+                        <option disabled>Оберіть категорію</option>
+                        <option>Заробітня платня</option>
+                        <option>Премія</option>
+                        <option>Подарунок</option>
+                    </select>
+                    <input type="date" class="incomes_date _incomes_date" placeholder='Введіть дату' required name="date">
+                    <a href='#' placeholder="Зберегти" class='incomes_button' name="send" id="save">Save</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/chart.js@2.8.0'></script>
+    <script src='../scripts/definition.js'></script>
+    <script src='../scripts/fstools.js'></script>
+    <!-- <script> 
+        var ctx = document.getElementById('#myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'doughnut',
+    
+        // The data for our dataset
+            data: {
+                labels: ['Дохід', 'Витрати'],
+                datasets: [{
+                    label: 'Поточний баланс',
+                    backgroundColor: ['green','#B61F51'],//'rgb(255, 99, 132)'
+                    borderColor: ['green','#B61F51'],
+                    data: [14000, 4000],
+                }]
+            },
+    
+    // Configuration options go here
+            options: {
+            }
+    });
+    </script>  -->
+<!--     <script>
+    require('./render.js');
+</script> -->
+    <script>
+        document.querySelector('._close').addEventListener('click', function(){
+            document.querySelector('._popup').style.display = 'none';
+        });
+
+        document.querySelector('._callPopup').addEventListener('click', function(){
+            document.querySelector('._popup').style.display = 'block';
+        });
+
+        const INCOMES_SUM = document.querySelector('._incomes_sum');
+        const INCOMES_CATEGORY = document.querySelector('._incomes_category');
+        const INCOMES_DATE = document.querySelector('._incomes_date');
+
+        let gActivities = [];
+
+        gActivities = GetDataFromFile();
+
+        gActivities.forEach(function(element) {
+
+            if(INCOME == element.type){
+                let templateCategory = document.querySelector('#template_category');
+                let templateCategoryItem = templateCategory.content.cloneNode(true);
+                templateCategoryItem.querySelector('.category_name').textContent = element.category;
+                templateCategoryItem.querySelector('.sum').
+                textContent = element.value + '₴';
+                templateCategoryItem.querySelector('.date').textContent = formatDate(element.date);
+
+                document.querySelector('#list_bycategory').appendChild(templateCategoryItem);
+
+
+                let templateDate = document.querySelector('#template_date');
+                let templateDateItem = templateDate.content.cloneNode(true);
+                templateDateItem.querySelector('.category_name').textContent = element.category;
+                templateDateItem.querySelector('.sum').
+                textContent = element.value + '₴';
+                templateDateItem.querySelector('.date').textContent = formatDate(element.date);
+
+                document.querySelector('#list_bydate').appendChild(templateDateItem);
+                }
+
+        });
+
+        document.querySelector('._close').addEventListener('click', function(){
+            document.querySelector('._popup').style.display = 'none';
+        });
+
+        document.querySelector('._callPopup').addEventListener('click', function(){
+            document.querySelector('._popup').style.display = 'block';
+        });
+
+        document.querySelector('._filter_bydate').addEventListener('click', function(){
+           document.querySelector('#list_bydate').classList.toggle('_hide_list');
+           document.querySelector('#list_bycategory').classList.toggle('_hide_list');
+        });
+
+        document.querySelector('._filter_bycategory').addEventListener('click', function(){
+           document.querySelector('#list_bydate').classList.toggle('_hide_list');
+           document.querySelector('#list_bycategory').classList.toggle('_hide_list');
+        });
+
+/*функция вывода формата даты */
+
+
+        document.querySelector("#save").addEventListener('click', addExpensesItem);
+
+        function addExpensesItem(){
+
+            let templateCategory = document.querySelector('#template_category');
+            let templateCategoryItem = templateCategory.content.cloneNode(true);
+            templateCategoryItem.querySelector('.category_name').textContent = INCOMES_CATEGORY.value;
+            templateCategoryItem.querySelector('.sum').textContent = INCOMES_SUM.value;
+            templateCategoryItem.querySelector('.date').textContent = INCOMES_DATE.value;
+
+            document.querySelector('#list_bycategory').appendChild(templateCategoryItem);
+
+            let templateDate = document.querySelector('#template_date');
+            let templateDateItem = templateDate.content.cloneNode(true);
+            templateDateItem.querySelector('.category_name').textContent = INCOMES_CATEGORY.value;
+            templateDateItem.querySelector('.sum').textContent = INCOMES_SUM.value + '₴';
+            templateDateItem.querySelector('.date').textContent = INCOMES_DATE.value;
+
+            document.querySelector('#list_bydate').appendChild(templateDateItem);
+
+            gActivities.push(createActivity(INCOME, INCOMES_SUM.value, INCOMES_CATEGORY.value, new Date(INCOMES_DATE.value)));
+            WriteDataToFile(gActivities);
+        }
+
+
+
+/*нужно достать значение каждого инпута и записать в массив gActivities*/
+/*var gActivities = [];
+
+gActivities.push(createActivity(EXPENCE|INCOME, value, category, date ));*/
+
+    </script>
+</body>
+</html>

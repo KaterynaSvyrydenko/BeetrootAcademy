@@ -8,6 +8,7 @@ const INCOME = 2;
 const EXPENCE_CATEGORY = [ "Home", "Travel"];
 const INCOME_CATEGORY = ["Salary", "Tax Refund"];
 
+
 const EXPENSE_CATEGORY_SIZE = EXPENCE_CATEGORY.length;
 const INCOME_CATEGORY_SIZE = INCOME_CATEGORY.length;
 
@@ -17,6 +18,7 @@ const INCOME_CATEGORY_SIZE = INCOME_CATEGORY.length;
  */
 function validateValue( value )
 {
+	return true;
 	return typeof value === 'number' && isFinite(value);
 }
 
@@ -26,6 +28,7 @@ function validateValue( value )
  */
 function validateCategory( type, category )
 {
+	return true;
 	if( type == EXPENCE )
 		return category > 0 && category < EXPENSE_CATEGORY_SIZE;
 	else if( type == INCOME )
@@ -58,9 +61,23 @@ function createActivity( activityType, activityValue, activityCategory, activity
 		throw "One of parameters is not Valid";
 	var activity = {
 		type : activityType,
-		value : activityValue,
+		value : Number(activityValue),
 		category : activityCategory,
 		date : activityDate
 	}
 	return activity;
+}
+
+function formatDate(date) {
+    let monthNames = [
+      "Січеня", "Лютого", "Березеня",
+      "Квітня", "Травеня", "Червеня", "Липня",
+      "Серпня", "Вересня", "Жовтня",
+      "Лисопада", "Грудня"
+    ];
+    var monthIndex = date.getMonth();
+    var day = date.getDate();
+    var year = date.getFullYear();
+
+    return day + ' ' +  monthNames[monthIndex] + ' ' + year;
 }

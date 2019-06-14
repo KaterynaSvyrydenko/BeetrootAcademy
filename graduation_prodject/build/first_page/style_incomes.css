@@ -92,7 +92,7 @@ a{
     width: 100%;
     margin: 0 auto;
     justify-content: center;
-    margin-top: 20px;
+    margin: 20px 0 128px;
 }
 .previous_btn{
     background: url(../img/previous.svg);
@@ -115,9 +115,9 @@ a{
     width: 60%;
     height: 600px;
     display: flex;
-    margin: 0 auto; 
+    margin: 0 auto 0; 
 }
-.main_h1{
+/* .main_h1{
     display: flex;
     margin: 0 auto;
     padding-top: 60px;
@@ -125,7 +125,7 @@ a{
 }
 .spend_text{
     margin-right: 10px;
-}
+} */
 
 /* END MAIN */
 
@@ -185,7 +185,7 @@ a{
     display: flex;
     flex-direction: column;
     padding: 0;
-    height: 560px;
+    height: 490px;
     overflow-y: auto;
 }
 
@@ -219,22 +219,24 @@ a{
 ._hide_list{
     display: none;
 }
+
+
 /* END LIST STYLE*/
 
 /* START BUTTON STYLE */
 
-.button_add{
+.button_add-incomes{
     position: absolute;
     display: flex;
-    background-image: linear-gradient(135deg, #A21A50 0%, #A21A50 5%, #EE4566 5%,#EE4566 10%,
-                      #A21A50 10%, #A21A50 15%, #EE4566 15%,#EE4566 20%, #A21A50 20%, 
-                      #A21A50 25%, #EE4566 25%,#EE4566 30%, #A21A50 30%, 
-                      #A21A50 35%, #EE4566 35%,#EE4566 40%, #A21A50 40%, #A21A50 45%,
-                      #EE4566 45%, #EE4566 50%, #A21A50 50%, #A21A50 55%, #EE4566 55%,
-                      #EE4566 60%, #A21A50 60%, #A21A50 65%, #EE4566 65%, #EE4566 70%,
-                      #A21A50 70%, #A21A50 75%, #EE4566 75%, #EE4566 80%, #A21A50 80%,
-                      #A21A50 85%, #EE4566 85%, #EE4566 90%, #A21A50 90%, #A21A50 95%,
-                      #EE4566 95%, #EE4566 100%);
+    background-image: linear-gradient(135deg, #00B056 0%, #00B056 5%, #00BD62 5%,#00BD62 10%,
+                      #00B056 10%, #00B056 15%, #00BD62 15%,#00BD62 20%, #00B056 20%, 
+                      #00B056 25%, #00BD62 25%,#00BD62 30%, #00B056 30%, 
+                      #00B056 35%, #00BD62 35%,#00BD62 40%, #00B056 40%, #00B056 45%,
+                      #00BD62 45%, #00BD62 50%, #00B056 50%, #00B056 55%, #00BD62 55%,
+                      #00BD62 60%, #00B056 60%, #00B056 65%, #00BD62 65%, #00BD62 70%,
+                      #00B056 70%, #00B056 75%, #00BD62 75%, #00BD62 80%, #00B056 80%,
+                      #00B056 85%, #00BD62 85%, #00BD62 90%, #00B056 90%, #00B056 95%,
+                      #00BD62 95%, #00BD62 100%);
     width: 100px;
     height: 100px;
     bottom: 0;
@@ -259,7 +261,7 @@ a{
 ._popup{
     display: none;
 }
-.expenses_content{
+.incomes_content{
     width: 100%;
     height: 100vh;
     background-color: rgba(242, 239, 230, .5);
@@ -270,7 +272,7 @@ a{
     right: 0;
 }
 
-.expenses_popup{
+.incomes_popup{
     width: 440px;
     height: 400px;
     background-color: #F2F0E6;
@@ -285,7 +287,7 @@ a{
     box-shadow: 6px 6px 6px rgba(0,0,0,.3), -6px 6px 6px rgba(0,0,0,.3);
 
 }
-.expenses_header{
+.incomes_header{
     width: 100%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
@@ -309,14 +311,13 @@ a{
     background-image: url(../img/close_red.svg);
     transition: background-color .2s;
 }
-.expenses_title{
+.incomes_title{
     line-height: 40px;
     font-size: 16px;
     color: #626262;
     background-color: #E6E4DA;
     text-align: center;
 }
-
 .check{
     background-image: url(../img/check.svg);
     background-repeat: no-repeat;
@@ -328,9 +329,9 @@ a{
     background-image: url(../img/check_green.svg);
     transition: background-color .2s;
 }
-.expenses_date,
-.expenses_sum,
-.expenses_category{
+.incomes_date,
+.incomes_sum,
+.incomes_category{
     display: block;
     box-sizing: border-box;
     margin-bottom: 30px;
@@ -343,17 +344,17 @@ a{
     color: #626262;
     font-size: 14px;
 }
-.expenses_sum{
+.incomes_sum{
     line-height: 55px;
     position: relative;
     font-size: 20px;
     background-color: white;
 }
-.expenses_category{
+.incomes_category{
     height: 40px;
  }
 
-.expenses_button{
+.incomes_button{
     padding: 0;
     border: none;
     font: inherit;
@@ -369,14 +370,10 @@ a{
     margin: 0 auto 45px;
     cursor: pointer;
 }
-.expenses_button:hover{
-    background-color: #A21A50;
+.incomes_button:hover{
+    background-color: green;
     transition: background-color .2s;
 }
 /* END ADD CARD */
 
 /* POP UP HIDE */
-
-.test{
-    background: green;
-}

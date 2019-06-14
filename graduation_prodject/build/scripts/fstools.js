@@ -10,7 +10,10 @@ var fs = require('fs');
  * @return {Array} data - array of activities.
  */
 function GetDataFromFile() {
-	var data = JSON.parse(fs.readFileSync(FILENAME, 'utf-8'));
+    var json_data = fs.readFileSync(FILENAME, 'utf-8');
+    if( json_data == '' )
+        return [];
+	var data = JSON.parse(json_data);
 
     data.forEach(function(item)
     {
@@ -30,7 +33,5 @@ function WriteDataToFile( data ) {
 	        console.log(err);
 	        return;
 	    }
-
-	    alert("The file has been succesfully saved");
 	});
 }

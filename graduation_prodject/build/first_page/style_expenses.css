@@ -92,7 +92,7 @@ a{
     width: 100%;
     margin: 0 auto;
     justify-content: center;
-    margin-top: 20px;
+    margin: 20px 0 128px;
 }
 .previous_btn{
     background: url(../img/previous.svg);
@@ -115,9 +115,9 @@ a{
     width: 60%;
     height: 600px;
     display: flex;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
-.main_h1{
+/* .main_h1{
     display: flex;
     margin: 0 auto;
     padding-top: 60px;
@@ -125,7 +125,7 @@ a{
 }
 .spend_text{
     margin-right: 10px;
-}
+} */
 
 /* END MAIN */
 
@@ -185,8 +185,9 @@ a{
     display: flex;
     flex-direction: column;
     padding: 0;
-    height: 560px;
+    height: 490px;
     overflow-y: auto;
+}
 }
 
 .item_date,
@@ -219,6 +220,8 @@ a{
 ._hide_list{
     display: none;
 }
+
+
 /* END LIST STYLE*/
 
 /* START BUTTON STYLE */
@@ -316,7 +319,6 @@ a{
     background-color: #E6E4DA;
     text-align: center;
 }
-
 .check{
     background-image: url(../img/check.svg);
     background-repeat: no-repeat;
@@ -376,7 +378,3 @@ a{
 /* END ADD CARD */
 
 /* POP UP HIDE */
-
-.test{
-    background: green;
-}
