@@ -6,7 +6,7 @@ const FILENAME = 'data.json'
 var fs = require('fs'); 
 
 /**
- * Read expence/income array data from json formatted file.
+ * Read expense/income array data from json formatted file.
  * @return {Array} data - array of activities.
  */
 function GetDataFromFile() {
@@ -23,7 +23,7 @@ function GetDataFromFile() {
 }
 
 /**
- * Write expence/income array data to json formatted file.
+ * Write expense/income array data to json formatted file.
  * @param {Array} data - array of activities.
  */
 function WriteDataToFile( data ) {

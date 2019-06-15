@@ -4,6 +4,7 @@
     <title>Scrooge</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_expenses.css">
 </head>
 <body>
@@ -15,35 +16,30 @@
                     <a href='index.html' class="summation nav_item">
                         <div class='icon summation_icon'></div>
                         <div class="text">Баланс</div>
-                        <div class="count">0</div>
+                        <div class="count _menu_balance">0</div>
                     </a>
                     <a href="index_expenses.html" class="expenses nav_item nav_item_active">
                         <div class='icon expenses_icon'></div>
                         <div class="text">Витрати</div>
-                        <div class="count">0</div>
+                        <div class="count _menu_expenses">0</div>
                     </a>
                     <a href="index_incomes.html" class="incomes nav_item">
                         <div class="icon incomes_icon"></div>
                         <div class="text">Дохід</div>
-                        <div class="count">0</div>
+                        <div class="count _menu_incomes">0</div>
                     </a>
                 </ul>
             </div>
             <main class="main">
-                <div class="main_nav">
-                    <a href='#' class="previous_btn"></a>
-                    <a href='#' class="main_date">1 червня 2019</a>
-                    <a href='#' class="next_btn"></a>
+                <div class="main_h1">
+                    <div class="h1_title">Витрати:</div>
+                    <div class="h1_sum _balance_sum">0 &#8372;</div>
                 </div>
-                    <!-- <div class="main_h1">
-                        <div class="spend_text">Баланс:</div>
-                        <div class="spend_sum">0 &#8372;</div>
-                    </div> -->
-                    <div class="main_chart">
-                        <div class="chart_layout"> 
-                            <!-- <canvas id="#myChart" style="display: flex; margin: auto;"></canvas> -->
-                        </div>
+                <div class="main_chart">
+                    <div class="chart_layout"> 
+                        <canvas id="#mainChart" style="display: flex; margin: auto;"></canvas>
                     </div>
+                </div>
             </main>
             <div class="sidebarRight">
                 <div class="filter">
@@ -98,9 +94,6 @@
                     </a>
                     <a href='#' class="expenses_title header_button">Додати витрати
                      </a>
-                     <a href="#" class="header_button">
-                        <div class="check"></div>
-                    </a>
                 </div>
                 <form class='form' name="user_data" action="" method="post">
                     <input type="number" class="_expenses_sum expenses_sum" placeholder='Додайте суму' min='1' required name="sum">
@@ -125,126 +118,36 @@
         </div>
     </div>
     <script src='https://cdn.jsdelivr.net/npm/chart.js@2.8.0'></script>
-    <script src='../scripts/definition.js'></script>
     <script src='../scripts/fstools.js'></script>
-<!--     <script> 
-var ctx = document.getElementById('#myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'doughnut',
-
-// The data for our dataset
-    data: {
-        labels: ['Дохід', 'Витрати'],
-        datasets: [{
-            label: 'Поточний баланс',
-            backgroundColor: ['green','#B61F51'],//'rgb(255, 99, 132)'
-            borderColor: ['green','#B61F51'],
-            data: [14000, 4000],
-        }]
-    },
-
-// Configuration options go here
-    options: {
-    }
-});
-</script> -->
-<!--     <script>
-    require('./render.js');
-</script> -->
+    <script src='../scripts/definition.js'></script>
+    <script src='../scripts/canvas.js'></script>
     <script>
-        document.querySelector('._close').addEventListener('click', function(){
+    gType = EXPENSE;
+
+    loadData(EXPENSE);
+    updateSummary();
+    drawChart();
+
+/*Add Incomes item */
+
+//@param - {string}
+//@param - {string}
+//@param - {string}
+//@param - {object}
+//@param - {array}
+
+    document.querySelector("#save").addEventListener('click', function(){
+        addItem(EXPENSES_CATEGORY.value, EXPENSES_SUM.value, new Date (EXPENSES_DATE.value), gActivities, EXPENSE);
+
+            gExpenses += Number(EXPENSES_SUM.value);
+            updateSummary();
+            drawChart();
             document.querySelector('._popup').style.display = 'none';
-        });
-
-        document.querySelector('._callPopup').addEventListener('click', function(){
-            document.querySelector('._popup').style.display = 'block';
-        });
-        const EXPENSES_SUM = document.querySelector('._expenses_sum');
-        const EXPENSES_CATEGORY = document.querySelector('.expenses_category');
-        const EXPENSES_DATE = document.querySelector('.expenses_date');
-
-        let gActivities = [];
-
-        gActivities = GetDataFromFile();
-
-/*onload function*/
-
-        gActivities.forEach(function(element) {
-
-            if(EXPENCE == element.type){
-                console.log()
-                let templateCategory = document.querySelector('#template_category');
-                let templateCategoryItem = templateCategory.content.cloneNode(true);
-                templateCategoryItem.querySelector('.category_name').textContent = element.category;
-                templateCategoryItem.querySelector('.sum').textContent = element.value + '₴';
-                templateCategoryItem.querySelector('.date').textContent = formatDate(element.date);
-
-                document.querySelector('#list_bycategory').appendChild(templateCategoryItem);
-
-
-                let templateDate = document.querySelector('#template_date');
-                let templateDateItem = templateDate.content.cloneNode(true);
-                templateDateItem.querySelector('.category_name').textContent = element.category;
-                templateDateItem.querySelector('.sum').textContent = element.value + '₴';
-                templateDateItem.querySelector('.date').textContent = formatDate(element.date);
-
-                document.querySelector('#list_bydate').appendChild(templateDateItem);
-                }
-
-        });
-
-        document.querySelector('._close').addEventListener('click', function(){
-            document.querySelector('._popup').style.display = 'none';
-        });
-
-        document.querySelector('._callPopup').addEventListener('click', function(){
-            document.querySelector('._popup').style.display = 'block';
-        });
-
-        document.querySelector('._filter_bydate').addEventListener('click', function(){
-           document.querySelector('#list_bydate').classList.toggle('_hide_list');
-           document.querySelector('#list_bycategory').classList.toggle('_hide_list');
-        });
-
-        document.querySelector('._filter_bycategory').addEventListener('click', function(){
-           document.querySelector('#list_bydate').classList.toggle('_hide_list');
-           document.querySelector('#list_bycategory').classList.toggle('_hide_list');
-           console.log('click')
-        });
-
-
-/*функция вывода формата даты */
-
-
-        document.querySelector("#save").addEventListener('click', addExpensesItem);
-
-        function addExpensesItem(){
-
-            let templateCategory = document.querySelector('#template_category');
-            let templateCategoryItem = templateCategory.content.cloneNode(true);
-            templateCategoryItem.querySelector('.category_name').textContent = EXPENSES_CATEGORY.value;
-            templateCategoryItem.querySelector('.sum').textContent = EXPENSES_SUM.value;
-            templateCategoryItem.querySelector('.date').textContent = EXPENSES_DATE.value;
-
-            document.querySelector('#list_bycategory').appendChild(templateCategoryItem);
-
-            let templateDate = document.querySelector('#template_date');
-            let templateDateItem = templateDate.content.cloneNode(true);
-            templateDateItem.querySelector('.category_name').textContent = EXPENSES_CATEGORY.value;
-            templateDateItem.querySelector('.sum').textContent = EXPENSES_SUM.value + '₴';
-            templateDateItem.querySelector('.date').textContent = EXPENSES_DATE.value;
-
-            document.querySelector('#list_bydate').appendChild(templateDateItem);
-
-            gActivities.push(createActivity(EXPENCE, EXPENSES_SUM.value, EXPENSES_CATEGORY.value, new Date(EXPENSES_DATE.value)));
-            WriteDataToFile(gActivities);
-        }
-
+    });
 /*нужно достать значение каждого инпута и записать в массив gActivities*/
 /*var gActivities = [];
 
-gActivities.push(createActivity(EXPENCE|INCOME, value, category, date ));*/
+gActivities.push(createActivity(expense|INCOME, value, category, date ));*/
 
     </script>
 
