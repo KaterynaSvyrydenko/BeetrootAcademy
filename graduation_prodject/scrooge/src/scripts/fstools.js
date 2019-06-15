@@ -10,16 +10,19 @@ var fs = require('fs');
  * @return {Array} data - array of activities.
  */
 function GetDataFromFile() {
+    console.log(fs.existsSync(FILENAME));
+    if( !fs.existsSync(FILENAME) )
+        WriteDataToFile([]);
     var json_data = fs.readFileSync(FILENAME, 'utf-8');
     if( json_data == '' )
         return [];
-	var data = JSON.parse(json_data);
+    var data = JSON.parse(json_data);
 
     data.forEach(function(item)
     {
-    	item.date = new Date(item.date);
+        item.date = new Date(item.date);
     });
-	return data;
+    return data;
 }
 
 /**
@@ -27,11 +30,5 @@ function GetDataFromFile() {
  * @param {Array} data - array of activities.
  */
 function WriteDataToFile( data ) {
-	fs.writeFile(FILENAME, JSON.stringify(data), (err) => {
-	    if (err) {
-	        alert("An error ocurred updating the file" + err.message);
-	        console.log(err);
-	        return;
-	    }
-	});
+    fs.writeFileSync(FILENAME, JSON.stringify(data));
 }
