@@ -6,7 +6,8 @@ const BALANCE = 0;
 const EXPENSE = 1;
 const INCOME = 2;
 
-//global selectors
+/**
+*gobal selectors*/
 
 const EXPENSES_SUM = document.querySelector('._expenses_sum');
 const EXPENSES_CATEGORY = document.querySelector('.expenses_category');
@@ -15,40 +16,26 @@ const INCOMES_SUM = document.querySelector('._incomes_sum');
 const INCOMES_CATEGORY = document.querySelector('._incomes_category');
 const INCOMES_DATE = document.querySelector('._incomes_date');
 
-let gActivities = [];
-var gExpenses = 0;
-var gIncomes = 0;
+let gActivities = getDataFromFile();
+let gExpenses = 0;
+let gIncomes = 0;
 let gType = 0;
 
-gActivities = GetDataFromFile();
+/*gActivities = getDataFromFile();*/
 
 /**
  * Validate value.
  * @return {boolean} result of validation.
  */
-function validateValue( value ) {
-    return true;
+function validateValue(value) {
     return typeof value === 'number' && isFinite(value);
-}
-
-/**
- * Validate type and category for this type.
- * @return {boolean} result of validation.
- */
-function validateCategory( type, category ) {
-    return true;
-    if( type == expense )
-        return category > 0 && category < EXPENSE_CATEGORY_SIZE;
-    else if( type == INCOME )
-        return category > 0 && category < INCOME_CATEGORY_SIZE;
-    else return false;
 }
 
 /**
  * Validate date of activity.
  * @return {boolean} result of validation.
  */
-function validateDate( date ) {
+function validateDate(date) {
     return date instanceof Date;
 }
 
@@ -61,9 +48,8 @@ function validateDate( date ) {
  * @return {Object} Activity object.
  */
 function createActivity(activityType, activityValue, activityCategory, activityDate) {
-    if( !( validateValue(activityValue) 
-        && validateCategory(activityCategory) 
-        && validateDate(activityDate) ) )
+    if( !( validateValue(activityValue)) 
+        || !(validateDate(activityDate)) )
         throw "One of parameters is not Valid";
     var activity = {
         type : activityType,
@@ -73,6 +59,10 @@ function createActivity(activityType, activityValue, activityCategory, activityD
     }
     return activity;
 }
+/*
+*date formatting
+*@param{object}
+*/
 
 function formatDate(date) {
     let monthNames = [
@@ -88,7 +78,13 @@ function formatDate(date) {
     return day + ' ' +  monthNames[monthIndex] + ' ' + year;
 }
 
-
+/*
+* Create template element list item 
+*@param {string} - choosen category
+*@param {number} - value of income or expence from input
+*@param {string} - choosen date
+*@param {string} - target selector of list 
+*/
 
 function pushListItem(category, value, date, templateId, listSelector) {
     let template = document.querySelector(templateId);
@@ -101,6 +97,10 @@ function pushListItem(category, value, date, templateId, listSelector) {
     document.querySelector(listSelector).appendChild(templateItem);
 };
 
+/*
+*Summary of balance, incomes or expenses
+*/
+
 function updateSummary() {
     let summary = document.querySelector('._balance_sum');
     let menuIncomes = document.querySelector('._menu_incomes');
@@ -110,6 +110,7 @@ function updateSummary() {
     menuIncomes.innerText = gIncomes +'₴';
     menuExpenses.innerText = gExpenses +'₴';
     menuBalance.innerText = gIncomes - gExpenses +'₴';
+
     switch(gType){
         case BALANCE : 
             summary.innerText = gIncomes - gExpenses +'₴';
@@ -123,12 +124,27 @@ function updateSummary() {
     }
 }
 
-function loadData(type){
-    gActivities.forEach(function(element) {
-        if(type == element.type){
-            pushListItem(element.category, element.value, element.date, '#template_category', '#list_bycategory');
+/*
+*process gActivities and create list item
+*@param {number} - BALANCE - 0; EXPENSE - 1; INCOME - 2;
+*/
 
-            pushListItem(element.category, element.value, element.date, '#template_date', '#list_bydate');
+function loadData(){
+    gActivities.forEach(function(element) {
+        if(gType == element.type || gType == BALANCE){
+            pushListItem(
+                         element.category,
+                         element.value, element.date,
+                        '#template_category',
+                        '#list_bycategory'
+            );
+            pushListItem(
+                         element.category, 
+                         element.value,
+                         element.date,
+                         '#template_date',
+                         '#list_bydate'
+            );
         }
         if(INCOME == element.type){
             gIncomes += element.value;
@@ -138,31 +154,62 @@ function loadData(type){
     });
 }
 
+/*
+*Push current user data to file: data.json with help of function writeDataToFile()
+*@param {string} - current category
+*@param {number} - current value of income or expence from input
+*@param {string} - current date
+*@param {array} - new array with all current data
+*@param {number} - BALANCE - 0; EXPENSE - 1; INCOME - 2
+*/
+
 function addItem(category, value, date, arr, type) {
     pushListItem(category, value, date, '#template_category', '#list_bycategory');
     pushListItem(category, value,date, '#template_date', '#list_bydate');
     arr.push(createActivity(type, value, category, date));
-    WriteDataToFile(arr);
+    writeDataToFile(arr);
 }
 
+/*
+*event for popup form
+*close form
+*/
 document.querySelector('._close').addEventListener('click', function(){
     document.querySelector('._popup').style.display = 'none';
 });
 
+/*
+*event for popup form
+*open form
+*/
 document.querySelector('._callPopup').addEventListener('click', function(){
     document.querySelector('._popup').style.display = 'block';
 });
 
+/*
+*event for rightSidebar
+*show list #list_bydate
+*/
 document.querySelector('._filter_bydate').addEventListener('click', function(){
    document.querySelector('#list_bydate').classList.toggle('_hide_list');
    document.querySelector('#list_bycategory').classList.toggle('_hide_list');
 });
 
+
+/*
+*event for rightSidebar
+*show list #list_category
+*/
 document.querySelector('._filter_bycategory').addEventListener('click', function(){
-   document.querySelector('#list_bydate').classList.toggle('_hide_list');
-   document.querySelector('#list_bycategory').classList.toggle('_hide_list');
-   console.log('click')
+document.querySelector('#list_bydate').classList.toggle('_hide_list');
+document.querySelector('#list_bycategory').classList.toggle('_hide_list');
 });
+
+/*
+* 
+*@param {number} - BALANCE - 0; EXPENSE - 1; INCOME - 2;
+*@return {array} - each element of array is chart sector;
+*/
 
 function getLabels(type){
     switch(type){
@@ -184,6 +231,10 @@ function getLabels(type){
             return ['Заробітня платня','Премія','Подарунок'];
     }
 }
+
+/*
+**@return {array} - each element of array is chart sector color
+*/
 
 function getBckgColor(){
     switch(gType){
@@ -210,20 +261,24 @@ function getBckgColor(){
     }
 }
 
+/*
+*create array where each element of array is summ of value for each category
+*@param {number} - BALANCE - 0; EXPENSE - 1; INCOME - 2;
+*@return {array}
+*/
 function getActivityData(type){
     var labels = getLabels(type);
     var map = new Map;
     var arr = [];
-    gActivities.forEach(( item ) => {
-        if( item.type == type ) {
-            if( !map[item.category] ) map[item.category] = 0;
+    gActivities.forEach((item) => {
+        if(item.type == type) {
+            if(!map[item.category]) map[item.category] = 0;
             map[item.category] += item.value;
         }
     });
-    console.log(map);
-    for( var i = 0; i < labels.length; ++i  )
+    for(var i = 0; i < labels.length; ++i)
     {
-        if( !map[labels[i]] )
+        if(!map[labels[i]])
             arr.push(0);
         else
             arr.push(map[labels[i]]);
@@ -231,33 +286,28 @@ function getActivityData(type){
     return arr;
 }
 
-
+/*
+*@return{object} - object whith array, where elements of array is data for create chart
+*/
 
 function getData(){
     switch(gType){
         case BALANCE : 
             return [{
                 backgroundColor: getBckgColor(),
-                // borderColor: ['green','#B61F51'],
                 data: [gIncomes,gExpenses],
             }];
             break;
         case INCOME : 
             return [{
                 backgroundColor: getBckgColor(),
-                // borderColor: ['green','#B61F51'],
                 data: getActivityData(INCOME),
             }];
         case EXPENSE :
             return [{
                 backgroundColor: getBckgColor(),
-                // borderColor: ['green','#B61F51'],
                 data: getActivityData(EXPENSE),
             }];
     }
 }
-/*
-document.querySelector("#save").addEventListener('click', function(){
-    addItem(INCOMES_CATEGORY.value, INCOMES_SUM.value, new Date (INCOMES_DATE.value), gActivities, INCOME);
-});
-*/
+

@@ -96,14 +96,14 @@
                     </a>
                 </div>
                 <form name="user_data" action="" method="post">
-                    <input type="number" class="incomes_sum _incomes_sum" placeholder='Додайте суму' min='1' required name="sum">
-                    <select id="selectID" class='incomes_category _incomes_category' name="category" required name="select">
+                    <input type="number" class="incomes_sum _incomes_sum" placeholder='Додайте суму' min='1' name="sum" required>
+                    <select id="selectID" class='incomes_category _incomes_category' name="category" name="select" required>
                         <option disabled>Оберіть категорію</option>
                         <option>Заробітня платня</option>
                         <option>Премія</option>
                         <option>Подарунок</option>
                     </select>
-                    <input type="date" class="incomes_date _incomes_date" placeholder='Введіть дату' required name="date">
+                    <input type="date" class="incomes_date _incomes_date" placeholder='Введіть дату' name="date" required>
                     <a href='#' placeholder="Зберегти" class='incomes_button' name="send" id="save">Save</a>
                 </form>
             </div>
@@ -116,21 +116,19 @@
     <script>
     gType = INCOME;
 
-    loadData(INCOME);
+    loadData();
     updateSummary();
     drawChart();
 
 /*Add Incomes item */
-
-//@param - {string}
-//@param - {string}
-//@param - {string}
-//@param - {object}
-//@param - {array}
-
     document.querySelector("#save").addEventListener('click', function(){
-        addItem(INCOMES_CATEGORY.value, INCOMES_SUM.value, new Date (INCOMES_DATE.value), gActivities, INCOME);
-
+        addItem(
+                INCOMES_CATEGORY.value,
+                Number(INCOMES_SUM.value),
+                new Date (INCOMES_DATE.value),
+                gActivities,
+                INCOME
+        );
             gIncomes += Number(INCOMES_SUM.value);
             updateSummary();
             drawChart();

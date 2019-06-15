@@ -19,7 +19,6 @@ function createWindow () {
   })
   // and load the index.html of the app.
   //mainWindow.webContents.openDevTools();
-console.log({__dirname});
   mainWindow.loadURL(`file://${__dirname}/first_page/index.html`);
 
   // Open the DevTools.

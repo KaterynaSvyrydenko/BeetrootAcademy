@@ -96,8 +96,8 @@
                      </a>
                 </div>
                 <form class='form' name="user_data" action="" method="post">
-                    <input type="number" class="_expenses_sum expenses_sum" placeholder='Додайте суму' min='1' required name="sum">
-                    <select id="expenses_category" class='expenses_category _expenses_category' name="category" required name="select">
+                    <input type="number" class="_expenses_sum expenses_sum" placeholder='Додайте суму' min='1' name="sum" required>
+                    <select id="expenses_category" class='expenses_category _expenses_category' name="category" name="select" required>
                         <option disabled>Оберіть категорію</option>
                         <option>Їжа</option>
                         <option>Одяг</option>
@@ -111,7 +111,7 @@
                         <option>Пожертви</option>
                         <option>Інше</option>
                     </select>
-                    <input type="date" class="expenses_date" placeholder='Введіть дату' required name="date">
+                    <input type="date" class="expenses_date" placeholder='Введіть дату' name="date" required>
                     <a href='#' value='save_data' class="expenses_button" type="" placeholder="Зберегти" name="send" id="save">Save</a>
                 </form>
             </div>
@@ -122,34 +122,27 @@
     <script src='../scripts/definition.js'></script>
     <script src='../scripts/canvas.js'></script>
     <script>
+
     gType = EXPENSE;
 
-    loadData(EXPENSE);
+    loadData();
     updateSummary();
     drawChart();
 
-/*Add Incomes item */
-
-//@param - {string}
-//@param - {string}
-//@param - {string}
-//@param - {object}
-//@param - {array}
-
+/*Add Expenses item */
     document.querySelector("#save").addEventListener('click', function(){
-        addItem(EXPENSES_CATEGORY.value, EXPENSES_SUM.value, new Date (EXPENSES_DATE.value), gActivities, EXPENSE);
-
+        addItem(
+                EXPENSES_CATEGORY.value,
+                Number(EXPENSES_SUM.value),
+                new Date (EXPENSES_DATE.value),
+                gActivities,
+                EXPENSE
+        );
             gExpenses += Number(EXPENSES_SUM.value);
             updateSummary();
             drawChart();
             document.querySelector('._popup').style.display = 'none';
     });
-/*нужно достать значение каждого инпута и записать в массив gActivities*/
-/*var gActivities = [];
-
-gActivities.push(createActivity(expense|INCOME, value, category, date ));*/
-
     </script>
-
 </body>
 </html>

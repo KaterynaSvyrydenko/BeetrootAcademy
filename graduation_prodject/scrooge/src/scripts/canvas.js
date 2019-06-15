@@ -33,5 +33,3 @@ function drawChart() {
     console.log(data);
     addData(labels,data);
 };
-
-drawChart();

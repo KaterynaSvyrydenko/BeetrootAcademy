@@ -4,7 +4,7 @@
   "description": "",
   "main": "scrooge/main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron-forge start scrooge",
     "doc": "./node_modules/.bin/jsdoc -r ./build/",
     "package": "electron-forge package",
     "make": "electron-forge make",

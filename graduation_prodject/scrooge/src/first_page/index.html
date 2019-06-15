@@ -115,18 +115,10 @@
             </form>
         </div>
     </div>
-  <!--   <script>
-      var link = document.querySelector('link[rel=import]');
-      var content = link.import.querySelector('#intro-dm');
-      document.body.appendChild(content.cloneNode(true));
-  </script> -->
     <script src='https://cdn.jsdelivr.net/npm/chart.js@2.8.0'></script>
     <script src='../scripts/fstools.js'></script>
     <script src='../scripts/definition.js'></script>
     <script src='../scripts/canvas.js'></script>
-<!--     <script>
-    require('./render.js');
-</script> -->
     <script>
     gType = BALANCE;
 
@@ -134,16 +126,9 @@
     updateSummary();
     drawChart();
 
-/*Add Incomes item */
-
-//@param - {string}
-//@param - {string}
-//@param - {string}
-//@param - {object}
-//@param - {array}
-
+/*Add Expenses item */
     document.querySelector("#save").addEventListener('click', function(){
-        addItem(EXPENSES_CATEGORY.value, EXPENSES_SUM.value, new Date (EXPENSES_DATE.value), gActivities, EXPENSE);
+        addItem(EXPENSES_CATEGORY.value, Number(EXPENSES_SUM.value), new Date (EXPENSES_DATE.value), gActivities, EXPENSE);
 
             gExpenses += Number(EXPENSES_SUM.value);
             updateSummary();
