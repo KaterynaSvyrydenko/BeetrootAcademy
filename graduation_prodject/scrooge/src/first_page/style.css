@@ -146,6 +146,10 @@ a{
     box-shadow: 6px 6px 6px rgba(0,0,0,.3), -6px 6px 6px rgba(0,0,0,.3);
     background-color: #F2EFE6;
 }
+.filter_bydate{
+    position: relative;
+    z-index: 2;
+}
 .bydate_icon{
     background: url(../img/date.svg);
     background-repeat: no-repeat;

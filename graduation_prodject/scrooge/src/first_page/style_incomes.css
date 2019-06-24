@@ -1,3 +1,5 @@
+/* START incomes*/
+
 .button_add-incomes{
     position: absolute;
     display: flex;
@@ -102,6 +104,5 @@
     background-color: green;
     transition: background-color .2s;
 }
-/* END ADD CARD */
+/* END incomes*/
 
-/* POP UP HIDE */
