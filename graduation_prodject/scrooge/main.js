@@ -19,7 +19,7 @@ function createWindow () {
   })
   // and load the index.html of the app.
   //mainWindow.webContents.openDevTools();
-  mainWindow.loadFile('scrooge/build/first_page/index.html');
+  mainWindow.loadFile('scrooge/src/first_page/index.html');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
