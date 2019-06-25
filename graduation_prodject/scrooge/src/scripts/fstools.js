@@ -11,7 +11,7 @@ var fs = require('fs');
  */
 function getDataFromFile() {
     if( !fs.existsSync(FILENAME) )
-        WriteDataToFile([]);
+        writeDataToFile([]);
     var json_data = fs.readFileSync(FILENAME, 'utf-8');
     if( json_data == '' )
         return [];
