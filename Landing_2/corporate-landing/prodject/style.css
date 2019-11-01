@@ -1,6 +1,7 @@
 body{
   margin: 0;
   font-family: 'Exo', sans-serif;
+  overflow-x: hidden;   
 }
 a{
     text-decoration: none;
@@ -8,14 +9,31 @@ a{
 }
 /* HEADER START*/
 .header{
-  margin: 0 auto;
-  width: 1440px;
+    overflow: hidden;
+    z-index: -100;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-top:45%;
+}
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 .header_content{
     width: 800px;
     margin: 0 auto;
     text-align: center;
     letter-spacing: 0.64px;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
 }
 .header_layout{
     position: relative;
@@ -45,7 +63,8 @@ h1{
 }
 .note{
     font-size: 14px;
-    margin: auto auto 360px;
+    margin: auto auto 300px;
+    color: grey;
 }
 /* video styles */
 .header_layout{ 
@@ -60,10 +79,6 @@ video {
     z-index: -1;
     opacity: 0.7;
     background-size: cover;
-    min-width: 100%; 
-    min-height: 100%;
-    width: auto;
-    height: auto; 
 }
 
 /* HEADER END */
@@ -134,7 +149,7 @@ p{
 }
 .visual_filter{
     width: 580px;
-    height: 764px;
+    height: 667px;
     background: #F6F5F3;
     position: absolute;
     z-index: 1;
@@ -142,7 +157,7 @@ p{
 }
 .visual_img{
     position: absolute;
-    bottom: 120px;
+    bottom: 58px;
     right: 75px;
     z-index: 0;
 } 
@@ -159,7 +174,7 @@ p{
     background: url(img/Earphones.jpg);
     background-repeat: no-repeat;
     margin: 0 auto;
-    padding: 135px 0px 85px;
+    padding: 135px 0px 145px;
 }
 .feauteres_header{
     text-align: center;
