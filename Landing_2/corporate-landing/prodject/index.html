@@ -8,18 +8,18 @@
 </head>
 <body>
     <header class='header'>
+        <div class="layout">
+            <video autoplay loop muted poster='video/Snow_Wires.jpg' class="fullscreen-bg__video stop" id='video'>
+            </video>
+        </div>
         <div class='header_content'>
             <h1 class='h1'>There is no other platforms for you as like</h1>
-            <a href='#' class="play_icon">
+            <a href='#' class="play_icon" id='playIcon'>
                 <img src="img/play.png" alt="">
             </a>
-            <a href='#' class="button">TRY NOW</a>
+            <a href='#trynow' class="button" id='button'>TRY NOW</a>
             <p class="note">*No need to add cards details</p>
         </div>
-        <video autoplay loop muted poster='video/Snow_Wires.jpg' class="fullscreen-bg__video">
-            <source src="video/Snow_Wires.webm" type="video/webm"></source>
-            <source src="video/Snow_Wires.mp4"></source>
-        </video> 
     </header>
     <section class="about_us">
         <div class='about_us_layout'>
@@ -37,7 +37,7 @@
                 <div class='visual_graphic'></div>
                 <div class="visual_filter"></div>
                 <div class="visual_img">
-                    <img src="img/about_us_men.jpg" width='450px' height='600px' alt="">
+                    <img src="img/6-4.jpg" width='450px' height='550px' alt="">
                 </div>
             </div>
         </div>
@@ -108,20 +108,20 @@
                     <div class="information_item information_style">“Aenean eu leo quam. Pellentesque ornare sem lacinia qua emere wancerid elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Etiasem malesuada magn.Curabitur blandit tempus porttitor.”</div>
                 </div>
             </div>
-            <div class="logos">
-                <div class="loogos_item">
+            <div class="client_logo">
+                <div class="logo_item">
                     <img class='filter' src="img/partner-logo-1.png" alt="">
                 </div>
-                <div class="loogos_item">
+                <div class="logo_item">
                     <img class='filter' src="img/partner-logo-4.png" alt="">
                 </div>
-                <div class="loogos_item">
+                <div class="logo_item">
                     <img class='filter' src="img/partner-logo-7.png" alt="">
                 </div>
-                <div class="loogos_item">
+                <div class="logo_item">
                     <img class='filter' src="img/partner-logo-5.png" alt="">
                 </div>
-                <div class="loogos_item">
+                <div class="logo_item">
                     <img class='filter' src="img/partner-logo-8.png" alt="">
                 </div>
             </div>
@@ -135,11 +135,11 @@
                 <p class="information_item">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Etiasem malesuada magn. Vestibulum felis euismod semper.</p>
             </div>
             <div class="browser_img">
-                <img src="img/browser.png" alt="" width='780px' height="350px">
+                <img class='img_item' src="img/browser.png" alt="" width='780px' height="350px">
             </div>
         </div>
     </section>
-    <section class='trynow'>
+    <section class='trynow' id='trynow'>
         <div class="trynow_layout">
             <div class="trynow_header">
                 <p class="under_title">NEW FEATURES</p>
@@ -165,7 +165,7 @@
     <footer class="footer">
         <div class="footer_layout">
             <div class="footer_info">
-                <div class="logo">
+                <div class="main_logo">
                     <img src="img/logo.png" alt="">
                 </div>
                 <div class="information_item">
@@ -210,5 +210,48 @@
             <div class='visual_graphic'></div>
         </div>
     </footer>
+    <script>
+        var video = document.querySelector('#video');
+
+        document.querySelector('#playIcon').addEventListener('click', playVideo);
+
+        function addSourceToVideo(element, src, type){
+            let source = document.createElement('source');
+            source.src = src;
+            source.tipe = type;
+
+            video.appendChild(source);
+        }
+
+        function playVideo(){
+            if(video.classList.contains('stop')){
+                addSourceToVideo(video, 'video/Snow_Wires.mp4', 'video/mp4');
+                video.classList.remove('stop');
+                video.play();
+            }else{
+                video.pause();
+                video.classList.add('stop');
+            }
+        }
+
+    </script>
 </body>
 </html>
+
+<!-- 
+function addSourceToVideo(element, src, type) {
+    var source = document.createElement('source');
+
+    source.src = src;
+    source.type = type;
+
+    element.appendChild(source);
+}
+
+var video = document.createElement('video');
+
+document.body.appendChild(video);
+
+addSourceToVideo(video, 'http://upload.wikimedia.org/wikipedia/commons/7/79/Big_Buck_Bunny_small.ogv', 'video/ogg');
+
+video.play(); -->
