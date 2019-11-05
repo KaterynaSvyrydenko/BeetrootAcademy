@@ -178,6 +178,7 @@ p{
     width: 100%;
     background: url(img/Earphones.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     margin: 0 auto;
     padding: 135px 0px 145px;
 }
